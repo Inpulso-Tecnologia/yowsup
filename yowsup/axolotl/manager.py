@@ -105,6 +105,8 @@ class AxolotlManager(object):
                 new_signed_prekey_id = latest_signed_prekey.getId() + 1
         else:
             new_signed_prekey_id = 1  #  >>>>> HERE WAS 0 <<<<<
+
+        print(new_signed_prekey_id)
         signed_prekey = KeyHelper.generateSignedPreKey(self._identity, new_signed_prekey_id)
         self._store.storeSignedPreKey(signed_prekey.getId(), signed_prekey)
         return signed_prekey
