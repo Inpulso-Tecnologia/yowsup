@@ -96,6 +96,7 @@ class AxolotlManager(object):
         self._store.preKeyStore.setAsSent([prekey.getId() for prekey in prekeyIds])
 
     def generate_signed_prekey(self):
+        import time
         logger.debug("generate_signed_prekey")
         latest_signed_prekey = self.load_latest_signed_prekey(generate=False)
         if latest_signed_prekey is not None:
