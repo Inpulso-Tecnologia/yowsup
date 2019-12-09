@@ -67,14 +67,14 @@ class AxolotlReceivelayer(AxolotlBaseLayer):
 
         except exceptions.InvalidKeyIdException:
             logger.warning("Invalid KeyId for %s, going to send a retry", encMessageProtocolEntity.getAuthor(False))
-            # self.toLower(OutgoingReceiptProtocolEntity(node["id"], node["from"], participant=node["participant"]).toProtocolTreeNode())
-
             self.send_retry(node, self.manager.registration_id)
+            self.toLower(OutgoingReceiptProtocolEntity(node["id"], node["from"], participant=node["participant"]).toProtocolTreeNode())
+            
         except exceptions.InvalidMessageException:
             logger.warning("InvalidMessage for %s, going to send a retry", encMessageProtocolEntity.getAuthor(False))
-            # self.toLower(OutgoingReceiptProtocolEntity(node["id"], node["from"], participant=node["participant"]).toProtocolTreeNode())
-
             self.send_retry(node, self.manager.registration_id)
+            self.toLower(OutgoingReceiptProtocolEntity(node["id"], node["from"], participant=node["participant"]).toProtocolTreeNode())
+
         except exceptions.NoSessionException:
             logger.warning("No session for %s, getting their keys now", encMessageProtocolEntity.getAuthor(False))
 
